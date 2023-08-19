@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 
-interface Pizza {
+export interface Pizza {
   name: string;
   price: number;
   ingredients: string[];
 }
 
-export class PizzaController {
-  constructor(private pizzaMenu: Pizza[]) { }
+export class PizzasController {
+  constructor(private menu: Pizza[]) { }
 
   getAllPizzas(_request: Request, response: Response): Response<Pizza[]> {
-    return response.json(this.pizzaMenu);
+    return response.json(this.menu);
   }
 }
