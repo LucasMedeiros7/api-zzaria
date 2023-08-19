@@ -4,6 +4,8 @@ import { registerRoutes } from './router';
 const app: Application = express();
 const port = process.env.PORT || 5050;
 
+app.use(express.json())
+
 app.get('/', (req: Request, res: Response) => {
   res.send('Welcome to APIzzaria');
 });
