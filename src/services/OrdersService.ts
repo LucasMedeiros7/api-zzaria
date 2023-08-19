@@ -1,7 +1,9 @@
+import path from "path";
 import { Pizza } from "../controllers/PizzasController";
+import { writeFileSync } from "fs";
 
 interface Order {
-  pizza: Pizza[]
+  pizza: Pizza
   quantity: number
 }
 
@@ -10,10 +12,29 @@ interface OrderRequest {
   quantity: number
 }
 
-export class OrdersService {
-    constructor(private orders: Order[]) {}
 
-    createNewOrder(order: OrderRequest) {
-      console.log('order', order)
+
+export class OrdersService {
+  private menuFilePath: string
+
+  constructor(private orders: Order[], private menu: Pizza[]) {
+    this.menuFilePath = path.join(__dirname, '../data/orders.json')
+  }
+
+  createNewOrder(order: OrderRequest) {
+    const pizza = this.findPizzaByName(order.pizzaName);
+    if (!pizza) return 'failed';
+    const newOrder = {
+      pizza,
+      quantity: order.quantity
     }
+    this.orders.push(newOrder)
+    writeFileSync(this.menuFilePath, JSON.stringify(this.orders, null, 2), 'utf-8')
+  }
+
+  findPizzaByName(pizzaName: string): Pizza | undefined {
+    const pizza = this.menu.find(pizza => pizza.name === pizzaName);
+    if (!pizza) return;
+    return pizza;
+  }
 }

@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "pizza": {
+      "name": "Margherita",
+      "price": 5,
+      "ingredients": [
+        "tomato",
+        "mozzarella"
+      ]
+    },
+    "quantity": 5
+  }
+]

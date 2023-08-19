@@ -6,7 +6,9 @@ export class OrdersController {
 
   createNewOrder(request: Request, response: Response): Response<void> {
     const { pizza_name, quantity } = request.body
-    this.ordersService.createNewOrder({ pizzaName: pizza_name, quantity })
+    if (this.ordersService.createNewOrder({ pizzaName: pizza_name, quantity })) {
+      return response.status(404).json({ message: 'Pizza not found!' })
+    }
     return response.status(201).json({ message: 'Order created!' })
   }
 }

@@ -3,13 +3,12 @@ import { PizzasController } from "./controllers/PizzasController";
 import { OrdersController } from "./controllers/OrdersController";
 import { OrdersService } from "./services/OrdersService";
 
-import Menu from './data/pizzas.json'
-import Orders from './data/orders.json'
-
+import menu from './data/pizzas.json'
+import orders from './data/orders.json'
 
 export const registerRoutes = (app: Application) => {
-  const pizzaController = new PizzasController(Menu);
-  const ordersService = new OrdersService(Orders)
+  const pizzaController = new PizzasController(menu);
+  const ordersService = new OrdersService(orders, menu)
   const ordersController = new OrdersController(ordersService)
 
   app.get('/pizzas', (req: Request, res: Response) => {
