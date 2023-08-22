@@ -3,7 +3,7 @@ import { Pizza } from "../controllers/PizzasController";
 import { writeFileSync } from "fs";
 import { randomUUID } from "crypto";
 
-interface Order {
+export interface Order {
   id: string
   pizza: Pizza
   quantity: number
@@ -31,6 +31,10 @@ export class OrdersService {
     }
     this.orders.push(newOrder)
     writeFileSync(this.menuFilePath, JSON.stringify(this.orders, null, 2), 'utf-8')
+  }
+
+  getAllOrders(): Order[] {
+    return this.orders;
   }
 
   findPizzaByName(pizzaName: string): Pizza | undefined {

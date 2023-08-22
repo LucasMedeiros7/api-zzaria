@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { OrdersService } from "../services/OrdersService";
+import { Order, OrdersService } from "../services/OrdersService";
 
 export class OrdersController {
   constructor(private ordersService: OrdersService) { }
@@ -10,5 +10,9 @@ export class OrdersController {
       return response.status(404).json({ message: 'Pizza not found!' })
     }
     return response.status(201).json({ message: 'Order created!' })
+  }
+
+  getAllOrders(request: Request, response: Response): Response<Order> {
+    return response.json(this.ordersService.getAllOrders());
   }
 }

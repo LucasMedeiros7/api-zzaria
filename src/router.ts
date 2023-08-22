@@ -15,8 +15,12 @@ const registerRoutes = (app: Application) => {
     pizzaController.getAllPizzas(req, res);
   });
 
-  app.post('/pizzas', (req: Request, res: Response) => {
-    ordersController.createNewOrder(req, res)
+  app.get('/orders', (req: Request, res: Response) => {
+    ordersController.getAllOrders(req, res);
+  });
+
+  app.post('/orders', (req: Request, res: Response) => {
+    ordersController.createNewOrder(req, res);
   })
 }
 
