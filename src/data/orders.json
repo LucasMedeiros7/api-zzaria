@@ -22,5 +22,17 @@
       ]
     },
     "quantity": 5
+  },
+  {
+    "id": "d7ea3e29-621c-485e-8a81-ea0c3c8f4337",
+    "pizza": {
+      "name": "Margherita",
+      "price": 5,
+      "ingredients": [
+        "tomato",
+        "mozzarella"
+      ]
+    },
+    "quantity": 5
   }
 ]
