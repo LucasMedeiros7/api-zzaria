@@ -3,7 +3,7 @@
 Welcome to the `APIzzaria` project! This application serves as a tool for frontend developers to easily help customers order pizzas through a JSON-based interface.
 
 ## Tasks to Complete
-- [ ] Make sure each new order gets a unique ID.
+- [X] Make sure each new order gets a unique ID.
 - [ ] Build the `/orders` section to display a list of all orders made.
 - [ ] Set up the `/orders/:id` part to let us see details about a specific order.
 - [ ] Upgrade the [POST] `/orders` feature, so customers can order multiple pizzas together.
