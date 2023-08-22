@@ -1,6 +1,6 @@
 [
   {
-    "id": "bc3f7adc-920d-43e1-89ba-aca760ebbf09",
+    "id": "85fbfb81-c382-4367-a611-39a352404bdf",
     "pizza": {
       "name": "Margherita",
       "price": 5,
@@ -12,25 +12,13 @@
     "quantity": 5
   },
   {
-    "id": "84ae3082-e15a-40f2-a15d-7272cc13a74f",
+    "id": "19e7da21-c9e6-4263-a233-f595150ebedb",
     "pizza": {
-      "name": "Margherita",
-      "price": 5,
+      "name": "Bufala",
+      "price": 6,
       "ingredients": [
         "tomato",
-        "mozzarella"
-      ]
-    },
-    "quantity": 5
-  },
-  {
-    "id": "d7ea3e29-621c-485e-8a81-ea0c3c8f4337",
-    "pizza": {
-      "name": "Margherita",
-      "price": 5,
-      "ingredients": [
-        "tomato",
-        "mozzarella"
+        "mozarella di bufala"
       ]
     },
     "quantity": 5

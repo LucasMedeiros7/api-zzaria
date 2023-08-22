@@ -47,9 +47,10 @@ export class OrdersService {
     })
     if (newOrders.length !== ordersRequest.length) return 'failed';
 
-    console.log(newOrders);
-    
-  
+    this.orders.push(...newOrders as Order[])
+
+    writeFileSync(this.menuFilePath, JSON.stringify(this.orders, null, 2), 'utf-8')
+
   }
 
   getAllOrders(): Order[] {
@@ -63,7 +64,7 @@ export class OrdersService {
   }
 
   findPizzaByName(pizzaName: string): Pizza | undefined {
-    const pizza = this.menu.find(pizza => pizza.name.toLowerCase() === pizzaName.toLowerCase() );
+    const pizza = this.menu.find(pizza => pizza.name.toLowerCase() === pizzaName.toLowerCase());
     if (!pizza) return;
     return pizza;
   }
