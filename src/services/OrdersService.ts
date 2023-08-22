@@ -37,6 +37,12 @@ export class OrdersService {
     return this.orders;
   }
 
+  getOrderById(id: string): Order | undefined {
+    const order = this.orders.find(order => order.id === id);
+    if (!order) return;
+    return order;
+  }
+
   findPizzaByName(pizzaName: string): Pizza | undefined {
     const pizza = this.menu.find(pizza => pizza.name === pizzaName);
     if (!pizza) return;

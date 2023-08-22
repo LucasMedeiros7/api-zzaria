@@ -19,6 +19,10 @@ const registerRoutes = (app: Application) => {
     ordersController.getAllOrders(req, res);
   });
 
+  app.get('/orders/:id', (req: Request, res: Response) => {
+    ordersController.getOrderById(req, res);
+  });
+
   app.post('/orders', (req: Request, res: Response) => {
     ordersController.createNewOrder(req, res);
   })

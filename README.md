@@ -4,8 +4,8 @@ Welcome to the `APIzzaria` project! This application serves as a tool for fronte
 
 ## Tasks to Complete
 - [X] Make sure each new order gets a unique ID.
-- [ ] Build the `/orders` section to display a list of all orders made.
-- [ ] Set up the `/orders/:id` part to let us see details about a specific order.
+- [X] Build the `/orders` section to display a list of all orders made.
+- [X] Set up the `/orders/:id` part to let us see details about a specific order.
 - [ ] Upgrade the [POST] `/orders` feature, so customers can order multiple pizzas together.
 - [ ] Go through the code, clean it up, and look for ways to make it even better.
 
