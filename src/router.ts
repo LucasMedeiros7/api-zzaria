@@ -6,7 +6,7 @@ import { OrdersService } from "./services/OrdersService";
 import menu from './data/pizzas.json'
 import orders from './data/orders.json'
 
-export const registerRoutes = (app: Application) => {
+const registerRoutes = (app: Application) => {
   const pizzaController = new PizzasController(menu);
   const ordersService = new OrdersService(orders, menu)
   const ordersController = new OrdersController(ordersService)
@@ -18,4 +18,9 @@ export const registerRoutes = (app: Application) => {
   app.post('/pizzas', (req: Request, res: Response) => {
     ordersController.createNewOrder(req, res)
   })
+}
+
+
+export const router = {
+  registerRoutes
 }

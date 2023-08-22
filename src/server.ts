@@ -1,16 +1,11 @@
-import express, { Request, Response, Application } from 'express';
-import { registerRoutes } from './router';
+import express from 'express';
+import { router } from './router';
 
-const app: Application = express();
+const app = express();
 const port = process.env.PORT || 5050;
 
-app.use(express.json())
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Welcome to APIzzaria');
-});
-
-registerRoutes(app);
+app.use(express.json());
+router.registerRoutes(app);
 
 app.listen(port, () => {
   console.log(`Server is Fire at http://localhost:${port}`);
