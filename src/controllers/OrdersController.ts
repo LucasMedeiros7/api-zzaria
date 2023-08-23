@@ -5,14 +5,13 @@ export class OrdersController {
   constructor(private ordersService: OrdersService) { }
 
   createNewOrder(request: Request, response: Response): Response<void> {
-    const order = request.body
-    console.log(order);
-    
+    const order = request.body    
     if (Array.isArray(order)) {
       if (this.ordersService.createManyOrders(order)) {
         return response.status(404).json({ message: 'Pizza not found!' })
       }
-    } else if (this.ordersService.createNewOrder({ pizzaName: order.pizzaName, quantity: order.quantity })) {
+    }
+    if (this.ordersService.createNewOrder({ pizzaName: order.pizzaName, quantity: order.quantity })) {
       return response.status(404).json({ message: 'Pizza not found!' })
     }
     return response.status(201).json({ message: 'Order created!' })
