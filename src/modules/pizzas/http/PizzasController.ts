@@ -1,10 +1,5 @@
 import { Request, Response } from 'express';
-
-export interface Pizza {
-  name: string;
-  price: number;
-  ingredients: string[];
-}
+import { Pizza } from '../domain';
 
 export class PizzasController {
   constructor(private menu: Pizza[]) { }

@@ -1,9 +1,8 @@
 import { Application, Request, Response } from 'express';
-import { PizzasController } from './controllers/PizzasController';
+import { PizzasController } from './modules/pizzas/http/PizzasController';
 import { OrdersController } from './controllers/OrdersController';
 import { OrdersService } from './services/OrdersService';
 
-import menu from './data/pizzas.json';
 import orders from './data/orders.json';
 import { FileSystemOrderRepository } from './repositories/FileSystemOrderRepository';
 

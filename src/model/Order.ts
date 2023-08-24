@@ -1,4 +1,4 @@
-import { Pizza } from '../controllers/PizzasController';
+import { Pizza } from '../modules/pizzas/domain/Pizza';
 
 export interface Order {
   id: string

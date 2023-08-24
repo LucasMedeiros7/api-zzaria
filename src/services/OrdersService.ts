@@ -3,9 +3,9 @@
 /* eslint-disable consistent-return */
 
 import { randomUUID } from 'crypto';
-import { type Pizza } from '../controllers/PizzasController';
 import { OrderRepository } from '../repositories/OrderRepository';
 import { Order } from '../model/Order';
+import { Pizza } from '../modules/pizzas/domain';
 
 interface OrderRequest {
   pizzaName: string
