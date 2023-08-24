@@ -1,16 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
-import path from 'path';
-import { writeFileSync } from 'fs';
+
 import { randomUUID } from 'crypto';
 import { type Pizza } from '../controllers/PizzasController';
-
-export interface Order {
-  id: string
-  pizza: Pizza
-  quantity: number
-}
+import { OrderRepository } from '../repositories/OrderRepository';
+import { Order } from '../model/Order';
 
 interface OrderRequest {
   pizzaName: string
@@ -18,13 +13,13 @@ interface OrderRequest {
 }
 
 export class OrdersService {
-  private readonly menuFilePath: string;
+  constructor(
+    private readonly orders: Order[],
+    private readonly menu: Pizza[],
+    private readonly orderRepository: OrderRepository,
+  ) {}
 
-  constructor(private readonly orders: Order[], private readonly menu: Pizza[]) {
-    this.menuFilePath = path.join(__dirname, '../data/orders.json');
-  }
-
-  createNewOrder(orderRequest: OrderRequest) {
+  async createNewOrder(orderRequest: OrderRequest) {
     const pizza = this.findPizzaByName(orderRequest.pizzaName);
     if (!pizza) return 'failed';
     const newOrder = {
@@ -32,11 +27,10 @@ export class OrdersService {
       pizza,
       quantity: orderRequest.quantity,
     };
-    this.orders.push(newOrder);
-    writeFileSync(this.menuFilePath, JSON.stringify(this.orders, null, 2), 'utf-8');
+    await this.orderRepository.insert(newOrder);
   }
 
-  createManyOrders(ordersRequest: OrderRequest[]) {
+  async createManyOrders(ordersRequest: OrderRequest[]) {
     const newOrders = ordersRequest.map((order) => {
       const pizza = this.findPizzaByName(order.pizzaName);
       if (pizza) {
@@ -48,8 +42,7 @@ export class OrdersService {
       }
     });
     if (newOrders.length !== ordersRequest.length) return 'failed';
-    this.orders.push(...newOrders as Order[]);
-    writeFileSync(this.menuFilePath, JSON.stringify(this.orders, null, 2), 'utf-8');
+    await this.orderRepository.insertMany(newOrders as Order[]);
   }
 
   getAllOrders(): Order[] {

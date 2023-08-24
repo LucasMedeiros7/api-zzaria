@@ -5,10 +5,12 @@ import { OrdersService } from './services/OrdersService';
 
 import menu from './data/pizzas.json';
 import orders from './data/orders.json';
+import { FileSystemOrderRepository } from './repositories/FileSystemOrderRepository';
 
 const registerRoutes = (app: Application) => {
   const pizzaController = new PizzasController(menu);
-  const ordersService = new OrdersService(orders, menu);
+  const orderRepository = new FileSystemOrderRepository();
+  const ordersService = new OrdersService(orders, menu, orderRepository);
   const ordersController = new OrdersController(ordersService);
 
   app.get('/pizzas', (req: Request, res: Response) => {
