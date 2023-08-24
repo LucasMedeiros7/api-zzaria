@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "This application serves the purpose of exposing a JSON API to be consumed by a frontend client for ordering pizza.",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/src/server.js",
