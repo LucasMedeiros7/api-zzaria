@@ -1,6 +1,6 @@
 import { it, expect, describe } from 'vitest';
-import { CreatePizzaUseCase } from './usecases';
-import { FakePizzaRepository } from './repositories';
+import { CreatePizzaUseCase } from '.';
+import { FakePizzaRepository } from '../repositories';
 
 describe('Create pizza use case', () => {
   it('should create a pizza with valid name, price, and ingredients', async () => {
@@ -16,9 +16,9 @@ describe('Create pizza use case', () => {
     await createPizza.execute(newPizza);
     const pizza = await pizzaRepository.findByName(newPizza.name);
 
-    expect(pizza?.name).toBe('New Pizza');
-    expect(pizza?.price).toBe(8);
-    expect(pizza?.ingredients).toEqual(['ingredient 1', 'ingredient 2']);
+    expect(pizza?.getValues()?.name).toBe('New Pizza');
+    expect(pizza?.getValues()?.price).toBe(8);
+    expect(pizza?.getValues()?.ingredients).toEqual(['ingredient 1', 'ingredient 2']);
   });
 
   it('should not create a pizza with negative price', async () => {
