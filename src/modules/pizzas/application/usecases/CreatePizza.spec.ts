@@ -1,8 +1,22 @@
-import { it, expect, describe } from 'vitest';
+import {
+  it, expect, describe, beforeAll, afterAll,
+} from 'vitest';
+import path from 'path';
+import { writeFileSync } from 'fs';
 import { CreatePizzaUseCase } from '.';
 import { FakePizzaRepository } from '../repositories';
 
 describe('Create pizza use case', () => {
+  beforeAll(() => {
+    const pizzaDataBeforeAll: string[] = [];
+    writeFileSync(path.join(__dirname, '../repositories/data.json'), JSON.stringify(pizzaDataBeforeAll, null, 2), 'utf-8');
+  });
+
+  afterAll(() => {
+    const pizzaDataAfterAll: string[] = [];
+    writeFileSync(path.join(__dirname, '../repositories/data.json'), JSON.stringify(pizzaDataAfterAll, null, 2), 'utf-8');
+  });
+
   it('should create a pizza with valid name, price, and ingredients', async () => {
     const pizzaRepository = new FakePizzaRepository();
     const createPizza = new CreatePizzaUseCase(pizzaRepository);
