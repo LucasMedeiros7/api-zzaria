@@ -1,26 +1,20 @@
-import path from 'path';
-import { writeFileSync } from 'fs';
 import { Pizza, PizzaRepository } from '../../domain';
-import { FakePizzaMapper } from './FakePizzaMapper';
-
-const PATH_MOCK_DATA = path.join(__dirname, './data.json');
 
 export class FakePizzaRepository implements PizzaRepository {
-  private path: string;
-
-  constructor() {
-    this.path = PATH_MOCK_DATA;
-  }
+  private pizzas: Pizza[] = [];
 
   async insert(pizza: Pizza): Promise<void> {
-    const allPizzas = FakePizzaMapper.retrievePizzasToJSON(this.path);
-    allPizzas.push(pizza);
-    writeFileSync(this.path, JSON.stringify(allPizzas, null, 2), 'utf-8');
+    this.pizzas.push(pizza);
   }
 
   async findByName(name: string): Promise<Pizza | undefined> {
-    const allPizzas = FakePizzaMapper.retrievePizzasToDomain(this.path);
-    const pizza = allPizzas.find((p) => p.getValues().name.toLowerCase() === name.toLowerCase());
-    return pizza;
+    return this.pizzas.find((pizza) => pizza.name === name);
+  }
+
+  async delete(name: string): Promise<void> {
+    const index = this.pizzas.findIndex((pizza) => pizza.name === name);
+    if (index !== -1) {
+      this.pizzas.splice(index, 1);
+    }
   }
 }
