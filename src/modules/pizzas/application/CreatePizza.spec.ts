@@ -21,16 +21,16 @@ describe('Create pizza use case', () => {
     expect(pizza?.ingredients).toEqual(['ingredient 1', 'ingredient 2']);
   });
 
-  // it('should not create a pizza with negative price', async () => {
-  //   const pizzaRepository = new FakePizzaRepository();
-  //   const createPizza = new CreatePizzaUseCase(pizzaRepository);
+  it('should not create a pizza with negative price', async () => {
+    const pizzaRepository = new FakePizzaRepository();
+    const createPizza = new CreatePizzaUseCase(pizzaRepository);
 
-  //   const newPizza = {
-  //     name: 'Negative Price Pizza',
-  //     price: -5,
-  //     ingredients: ['ingredient 1', 'ingredient 2'],
-  //   };
+    const newPizza = {
+      name: 'Negative Price Pizza',
+      price: -5,
+      ingredients: ['ingredient 1', 'ingredient 2'],
+    };
 
-  //   await expect(createPizza.execute(newPizza)).rejects.toThrow();
-  // });
+    await expect(createPizza.execute(newPizza)).rejects.toThrow();
+  });
 });
