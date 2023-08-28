@@ -1,1 +1,1 @@
-export type * from './CreatePizzaDTO';
+export * from './CreatePizzaDTO';

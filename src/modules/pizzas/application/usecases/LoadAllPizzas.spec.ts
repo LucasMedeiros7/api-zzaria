@@ -3,9 +3,9 @@ import {
 } from 'vitest';
 import { FakePizzaRepository } from '../repositories';
 import { Pizza, PizzaRepository } from '../../domain';
-import { ListAllPizzasUseCase } from './LoadAllPizzas';
+import { LoadAllPizzasUseCase } from './LoadAllPizzas';
 
-describe('Delete pizza use case', () => {
+describe('Load all pizzas use case', () => {
   let pizzaRepository: PizzaRepository;
 
   beforeAll(async () => {
@@ -16,7 +16,7 @@ describe('Delete pizza use case', () => {
   });
 
   it('should list all pizzas', async () => {
-    const listPizzas = new ListAllPizzasUseCase(pizzaRepository);
+    const listPizzas = new LoadAllPizzasUseCase(pizzaRepository);
 
     expect(await listPizzas.execute()).toHaveLength(3);
   });
