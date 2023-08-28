@@ -11,6 +11,10 @@ export class FakePizzaRepository implements PizzaRepository {
     return this.pizzas.find((pizza) => pizza.name === name);
   }
 
+  async findAll(): Promise<Pizza[]> {
+    return this.pizzas;
+  }
+
   async delete(name: string): Promise<void> {
     const index = this.pizzas.findIndex((pizza) => pizza.name === name);
     if (index !== -1) {
