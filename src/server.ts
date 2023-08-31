@@ -8,5 +8,6 @@ app.use(express.json());
 app.use('/pizza', pizzaRouter);
 
 app.listen(port, () => {
+  // eslint-disable-next-line no-console
   console.log(`Server is Fire at http://localhost:${port}`);
 });
