@@ -3,7 +3,7 @@ import {
 } from 'vitest';
 import { FakePizzaRepository } from '../repositories';
 import { Pizza, PizzaRepository } from '../../domain';
-import { LoadAllPizzasUseCase } from './LoadAllPizzas';
+import { LoadAllPizzasUseCase } from './RetrieveAllPizzasUseCase';
 
 describe('Load all pizzas use case', () => {
   let pizzaRepository: PizzaRepository;
