@@ -3,7 +3,7 @@ import {
 } from 'vitest';
 import { FakePizzaRepository } from '../repositories';
 import { Pizza, PizzaRepository } from '../../domain';
-import { LoadAllPizzasUseCase } from './RetrieveAllPizzasUseCase';
+import { RetrieveAllPizzasUseCase } from './RetrieveAllPizzasUseCase';
 
 describe('Load all pizzas use case', () => {
   let pizzaRepository: PizzaRepository;
@@ -16,7 +16,7 @@ describe('Load all pizzas use case', () => {
   });
 
   it('should list all pizzas', async () => {
-    const listPizzas = new LoadAllPizzasUseCase(pizzaRepository);
+    const listPizzas = new RetrieveAllPizzasUseCase(pizzaRepository);
 
     expect(await listPizzas.execute()).toHaveLength(3);
   });

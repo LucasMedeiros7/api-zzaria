@@ -3,5 +3,5 @@ import { makeCreatePizzaController, makeRetrieveAllPizzasController } from '../f
 
 export const pizzaRouter = Router();
 
-pizzaRouter.get('/', makeRetrieveAllPizzasController().retrieveAll);
-pizzaRouter.post('/', makeCreatePizzaController().create);
+pizzaRouter.get('/', makeRetrieveAllPizzasController);
+pizzaRouter.post('/', makeCreatePizzaController);
