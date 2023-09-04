@@ -5,7 +5,7 @@ import { FakePizzaRepository } from '../repositories';
 import { Pizza, PizzaRepository } from '../../domain';
 import { RetrieveAllPizzasUseCase } from './RetrieveAllPizzasUseCase';
 
-describe('Load all pizzas use case', () => {
+describe('Retrieve all pizzas use case', () => {
   let pizzaRepository: PizzaRepository;
 
   beforeAll(async () => {
@@ -17,7 +17,6 @@ describe('Load all pizzas use case', () => {
 
   it('should list all pizzas', async () => {
     const listPizzas = new RetrieveAllPizzasUseCase(pizzaRepository);
-
     expect(await listPizzas.execute()).toHaveLength(3);
   });
 });
